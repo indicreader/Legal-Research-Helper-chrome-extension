@@ -19,10 +19,10 @@ jobs:
       
       - name: Create Zip Archive
         run: |
-          zip -r lexlink-extension.zip . -x "*.git*" -x ".github/*" -x "graphify-out/*"
+          zip -r Legal-Research-Helper-chrome-extension.zip . -x "*.git*" -x ".github/*" -x "graphify-out/*"
           
       - name: Upload Extension Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: lexlink-extension
-          path: lexlink-extension.zip
+          name: Legal-Research-Helper-chrome-extension
+          path: Legal-Research-Helper-chrome-extension.zip
