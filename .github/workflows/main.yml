@@ -21,7 +21,7 @@ jobs:
           zip -r ../legal-research-helper.zip .
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v0.1
         with:
           files: legal-research-helper.zip
         env:
