@@ -1,0 +1,28 @@
+name: Build Chrome Extension
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Create Zip Archive
+        run: |
+          zip -r lexlink-extension.zip . -x "*.git*" -x ".github/*" -x "graphify-out/*"
+          
+      - name: Upload Extension Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lexlink-extension
+          path: lexlink-extension.zip
