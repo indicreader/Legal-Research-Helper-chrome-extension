@@ -1,0 +1,25 @@
+{
+  "statutory_acts": {
+    "patterns": [
+      "\\b(?:The\\s+)?([A-Z][A-Za-z0-9,&\\-\\s()]{3,60}\\s+(?:Act|Bill|Ordinance|Statute|Sanhita))\\b(?:[,]?\\s*\\b(\\d{4})\\b)?",
+      "\\b(?:Article|Section|Rule|Regulation|Clause|Chapter|Part|Schedule)\\s+[0-9A-Za-z]+(?:\\([a-zA-Z0-9]+\\))*(?:\\s+of\\s+(?:the\\s+)?[A-Z][A-Za-z0-9,&\\-\\s()]+(?:\\s+(?:Act|Bill|Ordinance|Statute|Sanhita|Rules|Regulations))?)?(?:\\s+(?:of|,)\\s*\\d{4})?\\b",
+      "\\b[A-Z][A-Za-z0-9,&\\-\\s()]{3,60}\\s+(?:Act|Bill|Ordinance|Statute|Sanhita)\\s+of\\s*,?\\s*\\d{4}\\b",
+      "\\b(?:The\\s+)?(?:Constitution\\s+of\\s+[A-Z][a-z]+|[A-Z][a-z]+\\s+Constitution)\\b",
+      "\\b(?:Notification|Circular)\\s+(?:No\\.?\\s*)?\\d+[A-Za-z0-9\\-]*\\s+(?:of\\s*,?\\s*\\d{4})?\\b"
+    ]
+  },
+  "case_law": {
+    "patterns": [
+      "\\b([A-Z][A-Za-z\\s.]+?\\s+v\\.?\\s+[A-Z][A-Za-z\\s.]+?)\\b",
+      "\\b(?:\\d{4}\\s+)?\\d+\\s+(?:SCC|AIR|SCR|SCALE|SCC\\s+Online|CriLJ|JT|LLJ|CompCas)\\s+\\d+\\b",
+      "\\b(?:Govt\\.?\\s+of\\s+[A-Z][A-Za-z]+|[A-Z][A-Za-z\\s.,&]+?)\\s+(?:v\\.?|vs\\.?)\\s+[A-Z][A-Za-z\\s.,&]+?(?:,\\s*\\d{4})?\\b",
+      "\\bIn\\s+re[:\\s]+[A-Z][A-Za-z\\s.,&]+\\b"
+    ]
+  },
+  "international_treaties": {
+    "patterns": [
+      "\\b(UNCLOS|TRIPS|WTO|GATT|Kyoto\\s+Protocol|Paris\\s+Accord|Geneva\\s+Convention)\\b",
+      "\\b(?:The\\s+)?(?:Treaty|Convention|Protocol|Accord|Pact)\\s+of\\s+[A-Z][A-Za-z\\s]+\\b"
+    ]
+  }
+}
