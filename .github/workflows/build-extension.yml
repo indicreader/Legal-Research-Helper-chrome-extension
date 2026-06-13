@@ -9,6 +9,9 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,3 +29,13 @@ jobs:
         with:
           name: Legal-Research-Helper-chrome-extension
           path: Legal-Research-Helper-chrome-extension.zip
+          
+      - name: Publish to GitHub Releases
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest Extension Build
+          body: "Automatically generated zip file of the latest extension code from the main branch."
+          prerelease: true
+          files: Legal-Research-Helper-chrome-extension.zip
