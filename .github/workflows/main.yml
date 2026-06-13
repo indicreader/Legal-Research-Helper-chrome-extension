@@ -1,0 +1,28 @@
+name: Build and Release Extension
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create ZIP
+        run: |
+          mkdir build
+          cp -r src/* build/
+          cd build
+          zip -r ../legal-research-helper.zip .
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: legal-research-helper.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
