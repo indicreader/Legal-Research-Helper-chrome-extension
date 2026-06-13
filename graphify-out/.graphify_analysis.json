@@ -1,0 +1,183 @@
+{
+  "communities": {
+    "0": [
+      "manifest",
+      "manifest_background",
+      "manifest_background_service_worker",
+      "manifest_content_scripts",
+      "manifest_description",
+      "manifest_manifest_version",
+      "manifest_name",
+      "manifest_permissions",
+      "manifest_version",
+      "manifest_web_accessible_resources"
+    ],
+    "1": [
+      "content",
+      "content_genericterms",
+      "content_loaddictionary",
+      "content_patterns",
+      "content_processdocument",
+      "content_seentokens",
+      "content_shouldfilter"
+    ],
+    "2": [
+      "dictionary",
+      "dictionary_case_law",
+      "dictionary_case_law_patterns",
+      "dictionary_international_treaties",
+      "dictionary_international_treaties_patterns",
+      "dictionary_statutory_acts",
+      "dictionary_statutory_acts_patterns"
+    ],
+    "3": [
+      "background_js",
+      "content_js",
+      "dictionary_json",
+      "icon_png",
+      "manifest_json"
+    ],
+    "4": [
+      "manifest_icons",
+      "manifest_icons_128",
+      "manifest_icons_16",
+      "manifest_icons_48"
+    ],
+    "5": [
+      "background"
+    ],
+    "6": [
+      "lexlink_extension"
+    ]
+  },
+  "cohesion": {
+    "0": 0.2,
+    "1": 0.3333333333333333,
+    "2": 0.2857142857142857,
+    "3": 0.5,
+    "4": 0.5,
+    "5": 1.0,
+    "6": 1.0
+  },
+  "gods": [
+    {
+      "id": "manifest_icons",
+      "label": "icons",
+      "degree": 4
+    },
+    {
+      "id": "content_js",
+      "label": "Content Script",
+      "degree": 3
+    },
+    {
+      "id": "manifest_json",
+      "label": "Manifest Configuration",
+      "degree": 3
+    },
+    {
+      "id": "content_loaddictionary",
+      "label": "loadDictionary()",
+      "degree": 2
+    },
+    {
+      "id": "content_processdocument",
+      "label": "processDocument()",
+      "degree": 2
+    },
+    {
+      "id": "dictionary_statutory_acts",
+      "label": "statutory_acts",
+      "degree": 2
+    },
+    {
+      "id": "dictionary_case_law",
+      "label": "case_law",
+      "degree": 2
+    },
+    {
+      "id": "dictionary_international_treaties",
+      "label": "international_treaties",
+      "degree": 2
+    },
+    {
+      "id": "manifest_background",
+      "label": "background",
+      "degree": 2
+    },
+    {
+      "id": "background_js",
+      "label": "Background Script",
+      "degree": 2
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Manifest Configuration",
+      "target": "LexLink Icon",
+      "source_files": [
+        "manifest.json",
+        "icon.png"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (code ↔ image); connects across different repos/directories"
+    },
+    {
+      "source": "Content Script",
+      "target": "Background Script",
+      "source_files": [
+        "content.js",
+        "background.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "Manifest Configuration",
+      "target": "Background Script",
+      "source_files": [
+        "manifest.json",
+        "background.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "Content Script",
+      "target": "LexLink Dictionary",
+      "source_files": [
+        "content.js",
+        "dictionary.json"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "Manifest Configuration",
+      "target": "Content Script",
+      "source_files": [
+        "manifest.json",
+        "content.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `icons` connect `Community 4` to `Community 0`?",
+      "why": "High betweenness centrality (0.059) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `patterns`, `seenTokens`, `genericTerms` to the rest of the system?",
+      "why": "20 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}
