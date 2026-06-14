@@ -28,8 +28,8 @@ function shouldFilter(text) {
   return genericTerms.has(text.toLowerCase().trim());
 }
 
-function processDocument() {
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+function processDocument(rootNode = document.body) {
+  const walker = document.createTreeWalker(rootNode, NodeFilter.SHOW_TEXT, {
     acceptNode: function(node) {
       if (node.parentNode && 
          (node.parentNode.nodeName === 'SCRIPT' || 
@@ -119,7 +119,7 @@ document.body.addEventListener('click', (e) => {
     } else if (category === 'case_law') {
       searchAppend = '+filetype:pdf+site:indiankanoon.org';
     } else if (category === 'international_treaties') {
-      searchAppend = '+filetype:pdf+official';
+      searchAppend = '+filetype:pdf+(site:un.org OR site:wipo.int)';
     }
 
     // DuckDuckGo "I'm Feeling Lucky" search using the !ducky bang to bypass Google's redirect notice
@@ -131,8 +131,34 @@ document.body.addEventListener('click', (e) => {
   }
 });
 
+// Set up MutationObserver to handle dynamically loaded content
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach(mutation => {
+    mutation.addedNodes.forEach(node => {
+      // Only process Element nodes or text nodes, avoiding our own highlights
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        if (!node.classList || !node.classList.contains('lexlink-match')) {
+          processDocument(node);
+        }
+      } else if (node.nodeType === Node.TEXT_NODE) {
+        if (node.parentNode && (!node.parentNode.classList || !node.parentNode.classList.contains('lexlink-match'))) {
+          processDocument(node.parentNode);
+        }
+      }
+    });
+  });
+});
+
+function startObserver() {
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', loadDictionary);
+  document.addEventListener('DOMContentLoaded', () => {
+    loadDictionary();
+    startObserver();
+  });
 } else {
   loadDictionary();
+  startObserver();
 }

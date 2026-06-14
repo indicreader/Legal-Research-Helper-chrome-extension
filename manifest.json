@@ -10,7 +10,8 @@
         "128": "icon128.png"
     },
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "contextMenus"
     ],
     "action": {
         "default_icon": {

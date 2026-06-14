@@ -19,7 +19,8 @@
   "international_treaties": {
     "patterns": [
       "\\b(UNCLOS|TRIPS|WTO|GATT|Kyoto\\s+Protocol|Paris\\s+Accord|Geneva\\s+Convention)\\b",
-      "\\b(?:The\\s+)?(?:Treaty|Convention|Protocol|Accord|Pact)\\s+of\\s+[A-Z][A-Za-z\\s]+\\b"
+      "\\b(?:The\\s+)?([A-Z][A-Za-z0-9,&\\-\\s()]{3,60}\\s+(?:Treaty|Convention|Protocol|Accord|Pact|Charter))\\b(?:[,]?\\s*\\b(\\d{4})\\b)?",
+      "\\b(?:The\\s+)?(?:Treaty|Convention|Protocol|Accord|Pact|Charter)\\s+of\\s+[A-Z][A-Za-z\\s]+\\b"
     ]
   }
 }
