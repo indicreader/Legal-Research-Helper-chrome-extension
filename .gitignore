@@ -1,0 +1,11 @@
+# Graphify & Build Outputs
+graphify-out/
+*.zip
+icons.zip
+
+# IDEs & System Files
+.gemini/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
