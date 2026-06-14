@@ -1,6 +1,6 @@
-# 🏛️ LexLink - Legal Research Helper
+# 🏛️ Legal-Research-Helper
 
-**LexLink** is a lightweight, high-performance Google Chrome Extension designed specifically for legal professionals, researchers, and students. It operates silently in the background of your browser, automatically identifying named legal instruments (Acts, Statutes, Case Laws, and International Treaties) within any web page or digital news article you read.
+**Legal-Research-Helper** is a lightweight, high-performance Google Chrome Extension designed specifically for legal professionals, researchers, and students. It operates silently in the background of your browser, automatically identifying named legal instruments (Acts, Statutes, Case Laws, and International Treaties) within any web page or digital news article you read.
 
 Instead of manually copy-pasting legal citations into search engines, LexLink transforms them into clickable links that jump you directly into the actual PDF documents using DuckDuckGo's "I'm Feeling Lucky" mechanism—entirely bypassing redirect notices and search result pages.
 
